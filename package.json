@@ -140,7 +140,6 @@
     "flow-check-ios": "flow check",
     "flow-check-android": "flow check --flowconfig-name .flowconfig.android",
     "lint": "eslint .",
-<<<<<<< HEAD
     "prettier": "prettier --write \"./**/*.js\" \"./**/*.md\"",
     "format-check": "prettier --list-different \"./**/*.js\" \"./**/*.md\"",
     "docker-setup-android": "docker pull reactnativecommunity/react-native-android",
@@ -157,30 +156,6 @@
   },
   "peerDependencies": {
     "react": "16.8.3"
-=======
-    "prettier": "find . -name node_modules -prune -or -name '*.js' -print | xargs prettier --write",
-    "start": "/usr/bin/env bash -c './scripts/packager.sh \"$@\" || true' --",
-    "test-android-setup": "docker pull hramos/android-base:latest",
-    "test-android-build-base": "docker build -t hramos/android-base -f ContainerShip/Dockerfile.android-base .",
-    "test-android-build": "docker build -t react/android -f ContainerShip/Dockerfile.android .",
-    "test-android-run-instrumentation": "docker run --cap-add=SYS_ADMIN -it react/android bash ContainerShip/scripts/run-android-docker-instrumentation-tests.sh",
-    "test-android-run-unit": "docker run --cap-add=SYS_ADMIN -it react/android bash ContainerShip/scripts/run-android-docker-unit-tests.sh",
-    "test-android-run-e2e": "docker run --privileged -it react/android bash ContainerShip/scripts/run-ci-e2e-tests.sh --android --js",
-    "test-android-all": "npm run test-android-build && npm run test-android-run-unit && npm run test-android-run-instrumentation && npm run test-android-run-e2e",
-    "test-android-instrumentation": "npm run test-android-build && npm run test-android-run-instrumentation",
-    "test-android-unit": "npm run test-android-build && npm run test-android-run-unit",
-    "test-android-e2e": "npm run test-android-build && npm run test-android-run-e2e"
-  },
-  "bin": {
-    "react-native": "local-cli/wrong-react-native.js"
-  },
-  "peerDependencies": {
-<<<<<<< HEAD
-    "react": "16.3.1"
->>>>>>> React sync for revisions 9d484ed...1c2876d
-=======
-    "react": "^16.3.0-alpha.0"
->>>>>>> Revert "React sync for revisions 9d484ed...1c2876d"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
@@ -206,18 +181,8 @@
     "inquirer": "^3.0.6",
     "invariant": "^2.2.4",
     "lodash": "^4.17.5",
-<<<<<<< HEAD
-<<<<<<< HEAD
     "metro-babel-register": "0.51.0",
     "metro-react-native-babel-transformer": "0.51.0",
-=======
-    "metro": "^0.31.0",
-    "metro-core": "^0.31.0",
->>>>>>> React sync for revisions 9d484ed...1c2876d
-=======
-    "metro": "^0.30.0",
-    "metro-core": "^0.30.0",
->>>>>>> Revert "React sync for revisions 9d484ed...1c2876d"
     "mime": "^1.3.4",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
@@ -259,7 +224,6 @@
     "eslint-plugin-flowtype": "2.43.0",
     "eslint-plugin-jest": "21.8.0",
     "eslint-plugin-prettier": "2.6.0",
-<<<<<<< HEAD
     "eslint-plugin-react": "7.8.2",
     "eslint-plugin-react-hooks": "^1.0.1",
     "eslint-plugin-react-native": "3.5.0",
@@ -291,16 +255,5 @@
         "name": "iPhone 8"
       }
     }
-=======
-    "eslint-plugin-react": "7.6.1",
-    "flow-bin": "^0.67.1",
-    "jest": "22.4.2",
-    "jest-junit": "3.6.0",
-    "prettier": "1.9.1",
-    "react": "^16.3.0-alpha.1",
-    "react-test-renderer": "^16.3.0-alpha.1",
-    "shelljs": "^0.7.8",
-    "sinon": "^2.2.0"
->>>>>>> React sync for revisions 9d484ed...1c2876d
   }
 }

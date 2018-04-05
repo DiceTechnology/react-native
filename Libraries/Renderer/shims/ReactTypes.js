@@ -36,7 +36,7 @@ export type ReactProvider<T> = {
 
 export type ReactProviderType<T> = {
   $$typeof: Symbol | number,
-  _context: ReactContext<T>,
+  context: ReactContext<T>,
 };
 
 export type ReactConsumer<T> = {
@@ -46,7 +46,7 @@ export type ReactConsumer<T> = {
   ref: null,
   props: {
     children: (value: T) => ReactNodeList,
-    unstable_observedBits?: number,
+    bits?: number,
   },
 };
 

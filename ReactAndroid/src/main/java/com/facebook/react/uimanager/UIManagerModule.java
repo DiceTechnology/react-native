@@ -12,6 +12,8 @@ import static com.facebook.react.bridge.ReactMarkerConstants.CREATE_UI_MANAGER_M
 
 import android.content.ComponentCallbacks2;
 import android.content.res.Configuration;
+import android.util.Log;
+
 import com.facebook.common.logging.FLog;
 import com.facebook.debug.holder.PrinterHolder;
 import com.facebook.debug.tags.ReactDebugOverlayTags;
@@ -108,6 +110,8 @@ public class UIManagerModule extends ReactContextBaseJavaModule implements
   private static final boolean DEBUG =
       PrinterHolder.getPrinter().shouldDisplayLogMessage(ReactDebugOverlayTags.UI_MANAGER);
 
+  private static boolean sIsNativeDpadEnabled = true;
+
   private final EventDispatcher mEventDispatcher;
   private final Map<String, Object> mModuleConstants;
   private final Map<String, Object> mCustomDirectEvents;
@@ -156,6 +160,17 @@ public class UIManagerModule extends ReactContextBaseJavaModule implements
 
     reactContext.addLifecycleEventListener(this);
   }
+
+  public static boolean isNativeDpadEnabled() {
+    return sIsNativeDpadEnabled;
+  }
+
+  @ReactMethod
+  public void enableNativeDpad(boolean enable) {
+    Log.d(NAME, "enableNativeDpad = " + enable);
+    sIsNativeDpadEnabled = enable;
+  }
+
   /**
    * This method gives an access to the {@link UIImplementation} object that can be used to execute
    * operations on the view hierarchy.

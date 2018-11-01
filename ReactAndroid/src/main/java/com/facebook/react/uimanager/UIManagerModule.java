@@ -15,6 +15,8 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.media.AudioManager;
 import android.util.ArrayMap;
+import android.util.Log;
+
 import com.facebook.common.logging.FLog;
 import com.facebook.debug.holder.PrinterHolder;
 import com.facebook.debug.tags.ReactDebugOverlayTags;
@@ -110,6 +112,8 @@ public class UIManagerModule extends ReactContextBaseJavaModule
   private static final boolean DEBUG =
       PrinterHolder.getPrinter().shouldDisplayLogMessage(ReactDebugOverlayTags.UI_MANAGER);
 
+  private static boolean sIsNativeDpadEnabled = true;
+
   private final EventDispatcher mEventDispatcher;
   private final Map<String, Object> mModuleConstants;
   private final Map<String, Object> mCustomDirectEvents;
@@ -188,6 +192,16 @@ public class UIManagerModule extends ReactContextBaseJavaModule
             minTimeLeftInFrameForNonBatchedOperationMs);
 
     reactContext.addLifecycleEventListener(this);
+  }
+
+  public static boolean isNativeDpadEnabled() {
+    return sIsNativeDpadEnabled;
+  }
+
+  @ReactMethod
+  public void enableNativeDpad(boolean enable) {
+    Log.d(NAME, "enableNativeDpad = " + enable);
+    sIsNativeDpadEnabled = enable;
   }
 
   /**

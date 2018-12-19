@@ -377,11 +377,9 @@ public class ReactEditText extends EditText {
 
   // VisibleForTesting from {@link TextInputEventsTestCase}.
   public void requestFocusFromJS() {
-    if (!isTVDevice()) {
-      mIsJSSettingFocus = true;
-      requestFocus();
-      mIsJSSettingFocus = false;
-    }
+    mIsJSSettingFocus = true;
+    requestFocus();
+    mIsJSSettingFocus = false;
   }
 
   /* package */ void clearFocusFromJS() {

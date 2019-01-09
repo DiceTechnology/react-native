@@ -375,9 +375,7 @@ public class ReactEditText extends EditText {
   }
 
   /* package */ void clearFocusFromJS() {
-    if (!isTVDevice()) {
-      clearFocus();
-    }
+    clearFocus();
   }
 
   // VisibleForTesting from {@link TextInputEventsTestCase}.

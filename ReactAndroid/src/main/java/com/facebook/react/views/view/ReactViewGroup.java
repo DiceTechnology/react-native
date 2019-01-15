@@ -842,6 +842,10 @@ public class ReactViewGroup extends ViewGroup implements
               canvas.clipPath(mPath);
               hasClipPath = true;
             }
+
+            if (!hasClipPath) {
+              canvas.clipRect(new RectF(left, top, right, bottom));
+            }
           }
 
           if (!hasClipPath) {

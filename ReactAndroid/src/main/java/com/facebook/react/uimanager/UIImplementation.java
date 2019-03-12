@@ -458,6 +458,23 @@ public class UIImplementation {
     for (int i = 0; i < tagsToDelete.length; i++) {
       removeShadowNode(mShadowNodeRegistry.getNode(tagsToDelete[i]));
     }
+
+    if (addAtIndices.size() > 0) {
+      Activity activity = mReactContext.getCurrentActivity();
+      if (activity != null) {
+        final View view = activity.findViewById(viewTag);
+        if (view != null) {
+          final Runnable maybeRequestFocus =
+            new Runnable() {
+              @Override
+              public void run() {
+                view.getParent().requestChildFocus(view, view.getRootView());
+              }
+            };
+          activity.runOnUiThread(maybeRequestFocus);
+        }
+      }
+    }
   }
 
   /**

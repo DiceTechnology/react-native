@@ -465,6 +465,11 @@ public class UIImplementation {
       Activity activity = mReactContext.getCurrentActivity();
       if (activity != null) {
         final View view = activity.findViewById(viewTag);
+        // The addAtIndices variable represents where this view should be added. 1 represents a new
+        // screen/view and 0 represents adding to the current view.
+        // The view variable is not null when there is a new view being added, e.g. when navigating
+
+        // TODO: find a better solution for the long term
         if (view != null && addAtIndices.getInt(0) == 1) {
           final Runnable maybeRequestFocus =
             new Runnable() {

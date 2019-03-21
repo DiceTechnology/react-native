@@ -465,7 +465,7 @@ public class UIImplementation {
       Activity activity = mReactContext.getCurrentActivity();
       if (activity != null) {
         final View view = activity.findViewById(viewTag);
-        if (view != null) {
+        if (view != null && addAtIndices.getInt(0) == 1) {
           final Runnable maybeRequestFocus =
             new Runnable() {
               @Override

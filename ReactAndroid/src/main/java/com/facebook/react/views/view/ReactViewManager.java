@@ -58,11 +58,9 @@ public class ReactViewManager extends ViewGroupManager<ReactViewGroup> {
 
   @ReactProp(name = "hasTVPreferredFocus")
   public void setTVPreferredFocus(ReactViewGroup view, boolean hasTVPreferredFocus) {
-    if (hasTVPreferredFocus) {
-      view.setFocusable(true);
-      view.setFocusableInTouchMode(true);
-      view.requestFocus();
-    }
+    view.setFocusable(hasTVPreferredFocus);
+    view.setFocusableInTouchMode(hasTVPreferredFocus);
+    if (hasTVPreferredFocus) view.requestFocus();
   }
 
   @ReactPropGroup(names = {

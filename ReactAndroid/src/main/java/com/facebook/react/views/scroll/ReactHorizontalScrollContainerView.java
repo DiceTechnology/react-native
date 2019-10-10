@@ -10,7 +10,13 @@ import com.facebook.react.modules.i18nmanager.I18nUtil;
 /** Container of Horizontal scrollViews that supports RTL scrolling. */
 public class ReactHorizontalScrollContainerView extends ViewGroup {
 
-  private int mLayoutDirection;
+  public interface Listener {
+    void onLayout();
+  }
+
+  private int mLayoutDirection;;
+  private int mLastWidth = 0;
+  private Listener rtlListener = null;
 
   public ReactHorizontalScrollContainerView(Context context) {
     super(context);
@@ -20,7 +26,7 @@ public class ReactHorizontalScrollContainerView extends ViewGroup {
 
   @Override
   protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-    HorizontalScrollView parent = (HorizontalScrollView) getParent();
+    final HorizontalScrollView parent = (HorizontalScrollView) getParent();
     parent.setClipChildren(false);
     this.setClipChildren(false);
 
@@ -33,11 +39,26 @@ public class ReactHorizontalScrollContainerView extends ViewGroup {
       setLeft(newLeft);
       setRight(newRight);
 
-      // Fix the ScrollX position when using RTL language
-      int offsetX = computeHorizontalScrollRange() - getScrollX();
+      // Fix the ScrollX position when using RTL language accounting for the case when new
+      // data is appended to the "end" (left) of the view (e.g. after fetching additional items)
+      final int offsetX = this.getMeasuredWidth() - mLastWidth + parent.getScrollX();
 
       // Call with the present values in order to re-layout if necessary
       parent.scrollTo(offsetX, parent.getScrollY());
+      mLastWidth = this.getMeasuredWidth();
+
+      // Use the listener to adjust the scrollposition if new data was appended
+      if (rtlListener != null) {
+        rtlListener.onLayout();
+      }
     }
+  }
+
+  public int getLastWidth() {
+    return mLastWidth;
+  }
+
+  public void setListener(Listener rtlListener) {
+    this.rtlListener = rtlListener;
   }
 }

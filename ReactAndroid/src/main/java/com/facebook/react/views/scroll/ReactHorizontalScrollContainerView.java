@@ -14,7 +14,7 @@ public class ReactHorizontalScrollContainerView extends ViewGroup {
     void onLayout();
   }
 
-  private int mLayoutDirection;;
+  private int mLayoutDirection;
   private int mLastWidth = 0;
   private Listener rtlListener = null;
 
